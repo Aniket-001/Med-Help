@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;   
+}
+body{
+  overflow:overlay;
+  overflow-x: hidden;
+  height: 100vh;
+  display: flex; 
+  flex-direction: column;
+}
+/* Customize scrollbar */
+
+/* ::-webkit-scrollbar-thumb{
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+} */
+/* ==========================================================
+Component--> Navbar1   
+============================================================= */
+/* .nav{
+  height:20vh;
+  background-color: #e4e4e4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+}
+.logo{
+  font-size: 5rem;
+}
+.navLink{
+
+}
+.navLink a{
+  text-decoration: none;
+  font-size: 3rem;
+}
+.navLink a:hover{
+
+} */
+
+.nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  position: fixed;
+  width:100vw;
+  height:10rem;
+  background-color: blueviolet;
+  font-family: "Open Sans", sans-serif;
+  /* background-image: linear-gradient(170deg, blueviolet 0%, blueviolet 60%, white 60.1%); */
+  z-index: 1;
+}
+.logo{
+  width:40%;
+  white-space: nowrap;
+  font-family: 'Luckiest Guy', cursive;
+  background-color: transparent;
+}
+.btngrp{
+  width:50%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+.btn1, .btn2, .btn3{
+  font-size: 2.5rem;
+  border:none;
+  outline: none;
+  background-color: transparent;
+  color:rgba(255, 255, 255,.5);
+  padding:7px;
+  position: relative;
+}
+.btn1::before{
+  content:"";
+  position: absolute;
+  height:30px;
+  width:10px;
+  top:-30px;
+  left:-1px;
+  padding: 18px;
+  border:none;
+  border-radius: 15px;
+  transition: all .2s linear;
+}
+.btn2::before{
+  content:"";
+  position: absolute;
+  height:30px;
+  width:10px;
+  top:-30px;
+  left:-4px;
+  padding: 18px;
+  border:none;
+  border-radius: 15px;
+  transition: all .2s linear;
+}
+
+.btn3::before{
+  content:"";
+  position: absolute;
+  height:30px;
+  width:10px;
+  top:-30px;
+  left:1px;
+  padding: 18px;
+  border:none;
+  border-radius: 15px;
+  transition: all .2s linear;
+  /* font-size: 'Luckiest Guy', cursive; */
+  /* border-bottom: 2px solid #fff; */
+}
+.btn1:hover,.btn2:hover,.btn3:hover{
+  color:#fff;
+}
+.btn1:hover::before, .btn2:hover::before{
+  border-bottom: 2px solid #fff;
+  top:-20px;
+}
+.btn3:hover::before{
+  border-bottom: 2px solid #fff;
+  top:-20px;
+}
+.btn1:active,.btn2:active,.btn3:active{
+  transform: scale(.95);
+}
+/* ==========================================================
+Progress Bar
+============================================================= */
+.progress{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  height:10%;
+  background: #808080;
+  border-radius:20px;
+  transition: all .2s linear;
+}
+/* ==========================================================
+Component--> Body   (1st Div)
+============================================================= */
+.body1{
+  /* background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);;  
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height:600px;
+  width:100vw;
+  padding-top:30px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top:15vh;
+  justify-content: center;
+  height: 45rem;
+  background-color: blueviolet;
+  /* For browsers that do not support gradients */
+  background-image: linear-gradient(170deg, blueviolet 0%, blueviolet 60%, white 60.1%);
+  background-repeat: no-repeat;
+}
+/* .bodyFront1{
+  height:100%;
+  width:80vw;
+  background-color: #e4e4e4;
+  box-shadow: 2px 2px 2px 2px #5e17eb;
+  border-top-right-radius:30px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.img15{
+  height:70%;
+  width:45%;
+  margin:8rem 5rem;
+  animation: motion 2s linear infinite;
+}
+@keyframes motion {
+  0%{
+    transform: translateY(0px);  
+  }
+  50%{
+    transform: translateY(5px);  
+  }
+  100%{
+    transform: translateY(0px);  
+  }
+}
+.content{
+  padding:50px;
+}
+.head{
+  font-size: 4rem;
+  color:#fff;
+  text-align: center;
+  font-family: 'Luckiestguy', cursive;
+}
+.para{
+  font-size: 3rem;
+  color:rgb(211, 218, 224);
+}
+/* @media screen and (max-width: 973px) {
+  .body1{
+    flex-direction: column;
+    padding-top: 50vh;
+  }
+  
+  .rightimage {
+      display: flex;
+      width: 100%;
+      margin-top: 0;
+  }
+} */
+
+/* .body2{
+  background-image: url(../public/Image/img9.png);  
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+} */
+
+/* ==========================================================
+Component--> Body   (2nd Div)
+============================================================= */
+.body2{
+  height:600px;
+  width:100vw;
+  /* padding-top:30px;  */
+  margin: auto;
+  margin-bottom:15vh;
+  margin-top:15vh;
+  background-color: #e4e4e4;
+  box-shadow: 2px 2px 2px 2px blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.gal{
+  display: grid;
+  height:100%;
+  width:70%;
+  grid-template-columns: 2;
+  grid-template-rows: 2;
+  /* gap: 5px; */
+}
+.gal img:first-child{
+  height:100%;
+  width:100%;
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.gal img:nth-child(2){
+  height:100%;
+  width:100%;
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+.gal img:nth-child(3){
+  height:100%;
+  width:100%;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.gal img:last-child{
+  height:100%;
+  width:100%;
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+.txt{
+  display: flex;
+  height:100%;
+  width:30%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:5rem;
+}
+.galTxt1{
+  font-size: 3.5rem;
+  color:blueviolet;
+  font-weight: bold;
+  margin-bottom: 1.3rem;
+}
+.galTxt2{
+  font-size:2.5rem;
+  color: #273443;
+  font-family: cursive;
+}
+.btn{
+  margin: 5px 5px;
+  border: 3px solid blueviolet;
+  border-radius: 10px;
+  font-size: 2rem;
+  background-color: #fff;
+  padding: 5px;
+  color: #5e17eb;
+}
+.btn:hover{
+  color:#fff;
+  background-color: #5e17eb;
+  border: 3px solid #fff;
+  transition: all .2s linear;
+}
+.btn:active{
+  transform: scale(.95);
+}
+/* ==========================================================
+ Routing class and active nav bar
+============================================================= */
+.active{
+  color:#fff;
+  background-color: #5e17eb;
+  border: 3px solid #fff;
+  transition: all .2s linear;
+  border: none;
+  background-color: transparent;
+}
+.route{
+  text-decoration: none;
+  font-size: 5rem;
+  color:#fff;
+  border: none;
+  background-color: transparent;
+}
+.route2{
+  color:blueviolet;
+}
+/* .route2:active{
+  color:#273443;
+} */
+/* ==========================================================
+Component--> Foot
+============================================================= */
+.foot{
+  /* margin-top: auto;*/
+  background-color: grey;
+  width:100vw;
+  height:25rem;
+  padding: 25px 30px;
+  border-top: 1px solid #273443;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows:1fr 1fr ;
+  justify-content:space-around; 
+  place-items: center;
+}
+.foot li{
+  list-style: none;
+  font-size: 1.8rem;
+  color:#fff;
+  margin:5px 0;
+}
+.foot li:not(:nth-child(1)):hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.foot li:nth-child(1):not(.foot1 li){
+  font-size: 2rem;
+  color:#273443;
+  margin: 12px 0;
+}
+.foot li i{
+  background-color:#273443;
+  color: grey;
+  font-size: 3rem;
+  margin-top: 1rem;
+  height:4rem;
+  width:4rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 4rem;
+}
+.foot1{
+  grid-row: 1/-1;
+}
+.foot li i:hover{
+  outline: 2px solid #fff;
+  color:#fff;
+}
+.copyright{
+  grid-column: 1/-1;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  color:#273443;
+  cursor:text;
+  text-align: center;
+}  
+
+
+/* ==========================================================
+Component--->Error
+============================================================= */
+.error{
+  width:100vw;
+  height:100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding:50px;
+  background-color: #eae0e0;
+}
+.errtxt{
+  margin-top: 10px;
+}
+.errtxt span:first-child{
+  color:blueviolet;
+  font-size: 5rem;
+  font-family: 'Courier New', Courier, monospace;
+  display: block;
+  text-align: center;
+}
+.errtxt span:nth-child(2){
+  color:#273443;
+  font-size: 3rem;
+  display: block;
+  text-align: center;
+}
+.errtxt span:last-child{
+  color:#273443;
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+}
+.error img{
+  width: 50%;
+  height: auto;
+  animation: scale 1.5s linear infinite;
+}
+@keyframes scale {
+  0%{
+      transform: scale(1);  
+  }
+  50%{
+      transform: scale(1.05);  
+  }
+  100%{
+      transform: scale(1);  
+  }
+}
