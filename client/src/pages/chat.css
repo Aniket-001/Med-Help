@@ -1,53 +1,4 @@
 
-/* ---------chatroom css--------- */
-
-
-/* .mainchat{
-    width:100vw;
-    height:100vh;
-    /* display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 10fr; 
-    /* grid-gap:10px; 
-} */
-/* .topchat{
-    background-color: blueviolet; 
-    /* height:50px;
-    width:100vw; 
-    grid-column:1/-1;
-    grid-row:1/2;   
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 3rem;
-    color:#fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-/* .centerchat{
-    /* background-color: rgb(55, 0, 255);
-    /* height:500px; 
-    /* width:500px; 
-    grid-column:2/3;
-    grid-row:2/-1;
-    border-right: 2px solid grey;
-    margin:10px ;
-} */
-/* .leftchat{
-    background-color: blueviolet;
-    /* height:500px; 
-    /* width:500px; 
-    grid-row:2/-1;
-    grid-column:1/2;
-}
-.rightchat{
-    /* background-color:grey; 
-    /* height:500px; 
-    /* width:500px; 
-    grid-row:2/-1;
-    grid-column:3/-1;
-} */
-
-
 /* ------------------------------------------------------------------------ */
 
 
@@ -76,6 +27,9 @@
     --tran-05: all 0.3s ease;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
+  }
 .mainchat{
     min-height: 100vh;
     /* background-color: var(--body-color); */
@@ -138,7 +92,7 @@
     cursor: pointer;
 }
 
-.sidebar .text,
+.sidebar .text,.wrap,
 .sidebar .icon{
     color: var(--text-color);
     transition: var(--tran-03);
@@ -150,7 +104,16 @@
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
+.wrap{
+    font-size: 17px;
+    font-weight: 500;
+    /* white-space: nowrap; */
+    width:170px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    opacity: 1;  
+}
+.sidebar.close .text,.sidebar.close .wrap{
     opacity: 0;
 }
 /* =========================== */
@@ -269,14 +232,15 @@ header .image-text {
     background-color: var(--primary-color);
 }
 .sidebar li .a:hover .icon,
-.sidebar li .a:hover .text{
+.sidebar li .a:hover .text,
+.sidebar li .a:hover .wrap{
     color: var(--sidebar-color);
 }
 .dark .sidebar li .a:hover .icon,
-.dark .sidebar li .a:hover .text{
+.dark .sidebar li .a:hover .text,
+.dark .sidebar li .a:hover .wrap{
     color: var(--text-color);
 }
-
 .sidebar .menu-bar{
     height: calc(100% - 55px);
     display: flex;
@@ -355,7 +319,7 @@ header .image-text {
     top: 0;
     left: 250px;
     height: 100vh;
-    width: calc(100% - 500px);
+    width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-05);
     /* border-right: 2px solid blueviolet; */
@@ -364,12 +328,13 @@ header .image-text {
     justify-content: space-between;
     align-items: center;
     padding-top: 10px;
+    overflow: hidden;
 }
 
 .sidebar.close ~ .home{
     left: 78px;
     height: 100vh;
-    width: calc(100% - 328px);
+    width: calc(100% - 80px);
 }
 
 .searchbar{
@@ -394,6 +359,7 @@ header .image-text {
     overflow-wrap: break-word;
     padding: 10px;
     resize:none;
+    text-align: center;
 }
 .sendbtn{
     background-color: blueviolet;
@@ -439,21 +405,23 @@ header .image-text {
     margin-bottom: 30px;
 }
 .centermsg{
-    margin:auto;
-    width:70%;
+    margin: 15px auto;
+    max-width:50%;
     background-color:cadetblue;
     border-radius: 10px;
     padding:5px;
-    word-wrap: break-word;
+    text-align: center;
 }
 .leftmsg{
     align-self: flex-start;
     margin: 15px 50px;
-    margin-right: 200px;
+    margin-right: 50%;
     background-color: antiquewhite;
     border-radius: 10px;
     padding:5px;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+    text-align: center;
+    white-space: pre-wrap;
 }
 .panel{
     transition: all 2s linear;
@@ -461,20 +429,94 @@ header .image-text {
 .rightmsg{
     align-self: flex-end;
     margin: 15px 50px;
-    margin-left: 200px;
+    margin-left: 50%;
     background-color: azure;
     border-radius: 10px;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+    white-space: pre-wrap;
     padding: 5px;
+    text-align: center;
 }
 /* =========================== */
-.rightchat{
+/* .rightchat{
     position: absolute;
     top:0;
     right: 0;
     width:250px;
     height:100vh;
     border-left: 2px solid blueviolet;
-    /* background-color: antiquewhite; */
-}
+    /* background-color: antiquewhite; 
+} */
 /* =========================== */
+
+
+
+/* ////============ */
+/* .showmsg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
+.showmsg img{
+    position: absolute;
+    top:10%;
+    left:35%;
+    transform: translate(-35%,-10%);
+    height:auto;
+    width:30%;
+    margin-right: 10px;
+    animation: zoom 2s linear infinite;
+}
+@keyframes zoom {
+    0%{
+        transform: scale(1.02);
+    }
+    50%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.02);
+    }
+}
+.nick{
+    position: absolute;
+    top:80%;
+    left:50%;
+    transform: translate(-50%,-80%);
+    background-color: blueviolet;
+    width:50%;
+    height:auto;
+    color:#fff;
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #fff;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.nick button{
+    border:2px solid #fff;
+    background-color: blueviolet;
+    padding:5px;
+    color:#fff;
+    width:30%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.nick input{
+    border:2px solid #fff;
+    background-color: blueviolet;
+    padding:5px;
+    color:#fff;
+    width:50%;
+    text-align: center;
+}
+.nick button:hover{
+    color:blueviolet;
+    border:2px solid #000;
+    background-color: #fff;
+}

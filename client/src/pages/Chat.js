@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./chat.css"
-import Rightchat from '../Component/Rightchat'
 import Leftchat from '../Component/Leftchat'
 import Centerchat from '../Component/Centerchat'
 
 
 const Chat = () => {
-  
+  const [theme,settheme] = useState(true);
+  const set=(data)=>{
+    settheme(data);
+  }
   return (
     <>
-      <div className="mainchat">
-        <Leftchat />
+      <div className={theme ? "mainchat" : "mainchat dark"}>
+        <Leftchat func={set}/>
         {/* <mycont.Provider val={}> */}
         <Centerchat />
         {/* </mycont.Provider> */}
-        <Rightchat />
-        {/* <h1>chat room</h1> */}
       </div>
     </>
   )

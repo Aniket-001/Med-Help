@@ -15,17 +15,12 @@ const Body = () => {
 
       
       <div className="body2">
-          <div className="gal">
-            <img src="Image/img15.svg" alt="gal_img" />
-            <img src="Image/img15.svg" alt="gal_img" />
-            <img src="Image/img15.svg" alt="gal_img" />
-            <img src="Image/img15.svg" alt="gal_img" />
-          </div>
+          <img src="Image/body.svg" alt="gal_img" />
           <div className="txt">
-          <div className="galTxt1">Hey there!</div>
-          <div className="galTxt2"> First time vistor? Be a part of this community. Let's take one step forward towards exploring this. Register yourself here
-          <button className='btn' onClick={()=>{navigate("/Signin")}}>Register</button>
-          </div>
+            <div className="galTxt1">Hey there!</div>
+            <div className="galTxt2"> First time vistor? Be a part of this community. Let's take one step forward towards exploring this. Register yourself here
+            <button className='btn' onClick={()=>{navigate("/Signin")}}>Register</button>
+            </div>
           </div>
       </div>
     </>

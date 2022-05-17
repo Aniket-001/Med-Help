@@ -1,33 +1,33 @@
-import React, {  useState , useEffect } from 'react'
+import React, { useState , useEffect } from 'react'
 import Postmsg from "./Postmsg"
 import { useNavigate } from 'react-router-dom'
 import socketio from "socket.io-client"
+import Scroll from "react-scroll-to-bottom"
+import { ToastContainer, toast } from 'react-toastify';
 
 let socket;
+let data;
 
 const Centerchat = () => {
 
-  const [msg, setmsg] = useState("");
-  const [status, setstatus] = useState(false);
-  const [arr, setarr] = useState([]);
-
   const navigate = useNavigate();
-
+  const [msg, setmsg] = useState("");
+  const [user, setuser] = useState("");
+  const [status, setstatus] = useState(false);
+  const [id, setid] = useState();
+  const [msgs, setmsgs] = useState([]);
+  
+  
   const passmsg = (e) => {
     e.preventDefault();
-    setmsg(e.target.value);
+    if(e.target.name==="input")
+      setmsg(e.target.value);
+    else{
+      setuser(e.target.value);
+    }
   }
-
-  const sendmsg = () => {
-    setarr([...arr,msg])
-    socket.emit('msg',msg);
-    setmsg("");
-  }
-
-    //const [userdata,setuserdata] = useState({});
-  //const mycont = createContext(userdata);
-  //const [userdata,setuserdata] = useState({fname:"..."});
-
+  
+  //---------------------------------------------
   const chatpage = async ()=>{
     try{
       const res = await fetch('/Chat',{
@@ -38,77 +38,108 @@ const Centerchat = () => {
         },
         credentials: "include"
       });
-      const data = await res.json();
-      //---------------------------------------------------
-      //setuserdata(data);
-      //console.log("dst", userdata);
-      
-      //----------------------------------------------------
+      data = await res.json();
       if(!res.status===200)
         throw new Error(res.error);
-      localStorage.setItem("user",JSON.stringify(data));
     }
     catch(err){
       navigate("/Login");
     }
   }
-
-  const Msg= () =>{
+  
+  useEffect(()=>{
+    chatpage()
+    return () => {
+      
+    }
+  },[]);
+  //--------------------------------
+  const sendmsg = (e) => {
+    e.preventDefault();
+    socket.emit('msg',{msg:msg,id:id,name:user});
+    setmsg("");
+  }
+  //--------------------------------------
+  const gochat = (e)=>{
+    e.preventDefault();
+    if (user === "") {
+      toast.error("Input box must be filled.", {
+        position: "top-center",
+        autoClose: 3000
+		  });
+      return;
+		}
+    setstatus(true);
     const endpoint ="http://localhost:5000/";
     socket=socketio(endpoint,{ transports:['websocket']});
-
-    /*socket.on("connect",()=>{
-        alert("connected");
-    })*/
-
-    socket.emit("joined",JSON.parse(localStorage.getItem("user")))
-    socket.on("welcome",(data)=>{
-      console.log(data.msg, data.name);
+    
+    socket.on("connect",()=>{
+      setid(socket.id);
     })
+   
+    socket.emit("joined",user)
+    
     socket.on("userjoined",(data)=>{
-      console.log(data.name, data.msg);
+      setmsgs(...msgs,[data]);
+    })
+    socket.on("welcome",(data)=>{
+      setmsgs(...msgs,[data]);
     })
   }
+  //-----------------------
 
+
+  //-----------------------
+  
   useEffect(()=>{
-    chatpage();
-  },[]);
-
-  useEffect(()=>{
-    Msg();
-  },[status]);
-
+    if(user==="")
+      return;
+    else{
+      socket.on("chat",(data)=>{
+        setmsgs([...msgs,data]);
+      })
+      return () => {
+        socket.off();
+      }}
+  },[msgs])
+  
   return (
     <div className="home">
       {
         status?
         <>
-      <div className="msg">
+      <Scroll className="msg">
         {
-          arr.map((val,ind)=>{
+          msgs.map((val,ind)=>{
             return(
-            <Postmsg msgg={val} ind={ind} />
+            <Postmsg msg={val.msg} key={ind} user={id} id={val.id} name={val.name} />
             )
           })
-        }
-        <div className="centermsg"> tempora doloribus pariatur incidunt, illum consequuntur sed? Expedita delectus odio minus cumque ab laborum.</div>
-        <div className="leftmsg">
-          Quibusdam ullam natus expedita rem dolore voluptatum harum voluptates ex saepe, velit voluptatem
-          .</div>
-        <div className="rightmsg">dcasdcjasdjhcashjbjsbcjsb Lorem ipsum dolor sit amet consectetur um, delectus voluptate eum sequi ipsum sed minus.
-          Perspiciatis c</div>
-      </div>
+        } 
+      </Scroll>
       <div className="searchbar">
-        {/* <input type="text" className="search" value={msg} onChange={passmsg} /> */}
-        <textarea className="send" placeholder="Enter your text here....." value={msg} onChange={passmsg} />
+
+        <textarea className="send" placeholder="Enter your text here....." value={msg} onChange={passmsg} name="input" />
         <button onClick={sendmsg} className="sendbtn"><i className='bx bx-paper-plane'></i></button>
       </div>
         </>
         :
-        <div className="note">hiiii there!!!!!!</div>
+        <>
+        <div className='showmsg'>
+          <img src="Image/name.svg" alt="name" />
+          <div className="nick">
+            <div className="box">Join the chatroom with a nick name : - 
+            </div>
+            <input type="text" name="user" className='user' placeholder="Your Nick Name..." value={user} onChange={passmsg} />
+            <button onClick={gochat}>GO</button>
+          </div>
+          <ToastContainer />
+        </div>
+        </>
       }
     </div>
   )
 }
 
 export default Centerchat
+export {data} 
