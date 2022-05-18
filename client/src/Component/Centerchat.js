@@ -70,6 +70,7 @@ const Centerchat = () => {
       return;
 		}
     setstatus(true);
+    //-------------------------------------
     const endpoint ="http://localhost:5000/";
     socket=socketio(endpoint,{ transports:['websocket']});
     

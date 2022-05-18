@@ -44,7 +44,7 @@ useEffect(()=>{
 
             <li className="search-box" onClick={() => setstatus(false)}>
             <i className='bx bxs-time-five icon'></i>
-              <Clock format="HH:mm:ss" interval={1000} ticking={true} style={{fontwight:"bold",fontSize: '30px', color:"blueviolet"}} />
+              <Clock format="HH:mm:ss" className="time"  interval={1000} ticking={true} style={{fontwight:"bold",fontSize: '30px', color:"blueviolet"}} />
             </li>
 
             <ul className="menu-links">

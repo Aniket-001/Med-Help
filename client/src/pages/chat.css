@@ -196,7 +196,7 @@ header .image-text {
     margin-top: 40px;
 }
 
-.sidebar li.search-box{
+/* .sidebar li.search-box{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
@@ -214,7 +214,9 @@ header .image-text {
     font-size: 17px;
     font-weight: 500;
     transition: var(--tran-05);
-}
+} */
+
+
 .sidebar li .a{
     list-style: none;
     height: 100%;
@@ -266,15 +268,7 @@ header .image-text {
 .mode .sun-moon i{
     position: absolute;
 }
-/* .mode .sun-moon i.sun{
-    opacity: 0;
-} */
-/* .dark .mode .sun-moon i.sun{
-    opacity: 1;
-} */
-/* .dark .mode .sun-moon i.moon{
-    opacity: 0;
-} */
+
 
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
@@ -336,14 +330,9 @@ header .image-text {
     height: 100vh;
     width: calc(100% - 80px);
 }
-
+/* ------------------------------ */
 .searchbar{
-    /* position: absolute;
-    bottom: 0; */
-    /* left:50vw; */
     width:100%;
-    /* margin-top: 91vh; */
-    /* background-color: #242526; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -419,7 +408,6 @@ header .image-text {
     background-color: antiquewhite;
     border-radius: 10px;
     padding:5px;
-    /* word-wrap: break-word; */
     text-align: center;
     white-space: pre-wrap;
 }
@@ -437,27 +425,9 @@ header .image-text {
     padding: 5px;
     text-align: center;
 }
-/* =========================== */
-/* .rightchat{
-    position: absolute;
-    top:0;
-    right: 0;
-    width:250px;
-    height:100vh;
-    border-left: 2px solid blueviolet;
-    /* background-color: antiquewhite; 
-} */
+
 /* =========================== */
 
-
-
-/* ////============ */
-/* .showmsg{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} */
 .showmsg img{
     position: absolute;
     top:10%;
